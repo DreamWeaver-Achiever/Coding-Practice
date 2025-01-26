@@ -48,20 +48,32 @@ In the first test case, there are five ways to climb the stairs i.e. {1,1,1,1} ,
 In the second test case, there are eight ways to climb the stairs i.e. {1,1,1,1,1} , {1,1,1,2} , {1,1,2,1}, {1,2,1,1}, {1,2,2},{2,1,1,1},{2,1,2} and {2,2,1}.
 C++ (g++ 5.4)
 */
-#include <bits/stdc++.h>
 
-int calculateStairs(int totalNumberOfStairs, int currentStair) {
-    //Base case
-    if(totalNumberOfStairs == currentStair) {
-        return 1;
-    }
-    if(currentStair>totalNumberOfStairs) {
+#include <bits/stdc++.h>
+#define MOD 1000000007
+long long calculateStairs(vector<long long>& dynamicArray, int currentStair, int totalNumberOfStairs) {
+    // Base case
+    if (currentStair > totalNumberOfStairs) {
         return 0;
     }
-    return(calculateStairs(totalNumberOfStairs, currentStair+1) + calculateStairs(totalNumberOfStairs, currentStair+2));
-}
-int countDistinctWays(int totalNumberOfStairs) {
-    //  Write your code here.
-    return calculateStairs(totalNumberOfStairs, 0);
+    if (currentStair == totalNumberOfStairs) {
+        return 1;
+    }
 
+    // Check if the result is already stored in the dynamic array
+    if (dynamicArray[currentStair] != -1) {
+        return dynamicArray[currentStair];
+    }
+
+    // Calculate the result
+     dynamicArray[currentStair] = (calculateStairs(dynamicArray, currentStair + 1, totalNumberOfStairs) % MOD + 
+                                calculateStairs(dynamicArray, currentStair + 2, totalNumberOfStairs) % MOD) % MOD;
+
+    return dynamicArray[currentStair];
+}
+
+int countDistinctWays(int totalNumberOfStairs) {
+    // Declare dynamic array with size n+1 and all elements = -1.
+    vector<long long> dynamicArray(totalNumberOfStairs + 1, -1); 
+    return calculateStairs(dynamicArray, 0, totalNumberOfStairs);
 }
