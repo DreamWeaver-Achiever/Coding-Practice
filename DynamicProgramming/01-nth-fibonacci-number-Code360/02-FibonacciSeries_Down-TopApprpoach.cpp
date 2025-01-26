@@ -48,7 +48,9 @@ Where ‘n’ represents the number for which we have to find its equivalent Fib
 Time Limit: 1 second
 */
 
-//Down To Up Approach (Tabulation)-> 
+//Down To Up Approach (Tabulation)->
+// Time Complexity -> O(n)
+// Space Complexity -> O(n)
 #include<bits/stdc++.h>
 using namespace std;
 
