@@ -48,7 +48,7 @@ Where ‘n’ represents the number for which we have to find its equivalent Fib
 Time Limit: 1 second
 */
 
-//Top To Down Approach -> 
+//Top To Down Approach (Memoization)-> 
 #include<bits/stdc++.h>
 using namespace std;
 
