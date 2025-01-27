@@ -15,12 +15,12 @@ public:
             return cost[1];
         }
 
-        //Step -2 -> Check if element == -1 i.e. the check if result is already computed or not.
+        //Step -2 -> Check if element != -1 i.e. the check if result is already computed or not.
         if(dynamicArray[totalStairs] != -1) {
             return dynamicArray[totalStairs];
         }
 
-        //Step - 3 -> Recursive way i.e. element != -1 so result is not yet computed.
+        //Step - 3 -> Recursive way i.e. element == -1 so result is not yet computed.
         return cost[totalStairs] + min(calculateMinimumCost(cost, totalStairs-1, dynamicArray), calculateMinimumCost(cost, totalStairs-2, dynamicArray));
     }
     int minCostClimbingStairs(vector<int>& cost) {
