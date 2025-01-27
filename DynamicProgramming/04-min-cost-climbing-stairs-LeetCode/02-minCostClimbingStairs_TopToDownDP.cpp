@@ -1,5 +1,5 @@
 /* Time Complexity -> O(n), where n is the number of stairs. This is because each step's minimum cost is calculated only once and stored in the dynamicArray.
-   Space Complexity: O(n) to store the dynamicArray.
+   Space Complexity: O(n) to store the dynamicArray + O(n) for storing constants.
 */
 
 class Solution {
