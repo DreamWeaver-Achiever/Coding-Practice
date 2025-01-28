@@ -51,45 +51,24 @@ Sample output 2 :
 */
 
 /* Time Complexity -> O(arrayElements.size()* targetSum)
-   Space Complexity -> O(targetSum)
+   Space Complexity -> O(targetSum) -> The dynamicArray vector is used to store the results of subproblems. The size of dynamicArray is targetSum + 1. Therefore, the space complexity is determined by the size of this array, which is O(X).
 */
 #include <bits/stdc++.h> 
 
-int calculateMinimumElementsRquired(vector<int>& arrayElements, int targetSum, vector<int>& dynamicArray) {
-
-    //Base case - 1
-    if(targetSum == 0) {
-        return 0;
-    }
-
-    //Base case - 2
-    if(targetSum < 0) {
-        return INT_MAX;
-    }
-
-    //Step - 2 -> Check if dynamicArray[i] != -1 i.e. result is already computed.
-    if(dynamicArray[targetSum] != -1) {
-        return dynamicArray[targetSum];
-    }
-
-    int minimumElements = INT_MAX;//Step - 3 -> Check if dynamicArray[i] == -1; it means result is not yet computed.
-    for(int i = 0; i<arrayElements.size(); i++) {
-        int calculation = calculateMinimumElementsRquired(arrayElements, targetSum-arrayElements[i], dynamicArray);
-        if(calculation != INT_MAX) { //This condition is required as in the next step we doing 1+answer; if answer==INT_MAX then we will get number overflow.
-            minimumElements = min(minimumElements, 1+calculation);
-        }
-    }
-    dynamicArray[targetSum] = minimumElements;
-    return minimumElements;
-}
 int minimumElements(vector<int> &arrayOfNumber, int targetSum)
 {
-    // Write your code here.
-    vector<int> dynamicArray(targetSum+1, -1);
-    int minimumElements = calculateMinimumElementsRquired(arrayOfNumber, targetSum, dynamicArray);
-    if(minimumElements == INT_MAX) {
+    vector<int> dynamicArray(targetSum+1, INT_MAX);
+    dynamicArray[0]=0;
+
+    for(int i = 1; i<=targetSum; i++) { //Solve for amount from 1 to targetSum
+        for(int j=0; j<arrayOfNumber.size(); j++) {
+            if(i-arrayOfNumber[j] >= 0 && dynamicArray[i-arrayOfNumber[j] != INT_MAX]) {
+                dynamicArray[i] = min(dynamicArray[i], 1+dynamicArray[i-arrayOfNumber[j]]);
+            }
+        }
+    } 
+    if(dynamicArray[targetSum] == INT_MAX) {
         return -1;
     }
-
-    return minimumElements;
+    return dynamicArray[targetSum];
 }
