@@ -49,7 +49,8 @@ Sample output 2 :
 2
 6 
 */
-
+/* Time Complexity -> Exponential
+*/
 #include <bits/stdc++.h> 
 
 int calculateMinimumElementsRquired(vector<int>& arrayElements, int targetSum) {
