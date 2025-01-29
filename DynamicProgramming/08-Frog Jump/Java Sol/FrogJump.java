@@ -18,7 +18,7 @@ class Solution {
 
     }
     public boolean solve(int[] stones, int idx, int k){
-        if(idx == stones.length - 1) return true; // reached the end
+        if(idx == stones.length - 1) return true; // reached the end 
         if(dp[idx][k] != -1) return dp[idx][k] == 1; 
 
         boolean k0 = false;
