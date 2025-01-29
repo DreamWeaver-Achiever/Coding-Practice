@@ -44,36 +44,25 @@ In test case 2, out of all the possibilities, if we take the sum of 'ARR[0]', 'A
 */
 
 /*Time Complexity -> O(n)
-Space Complexity -> O(n)+O(n)*/
+Space Complexity -> O(n)*/
+
 #include <bits/stdc++.h> 
-
-int calculateMaxNonAdjacentSum(vector<int>& arrayList, int totalElements, vector<int>& dynamicArray) {
-    //Base Case - 1
-    if(totalElements<0) {
-        return 0;
-    }
-    //Base Case - 2 -> Only one element is present
-    if(totalElements==0) { 
-        return arrayList[0];
-    }
-
-    //Step - 2 -> Check if elemtent != -1 i.e. results are already computed.
-    if(dynamicArray[totalElements] != -1) {
-        return dynamicArray[totalElements];
-    }
-
-    //Step - 3 -. Check if elements == -1 i.e. calculate result using recursion+Memoisation.
-    int include = calculateMaxNonAdjacentSum(arrayList, totalElements-2, dynamicArray) + arrayList[totalElements];
-    int exclude = calculateMaxNonAdjacentSum(arrayList, totalElements-1, dynamicArray);
-    dynamicArray[totalElements] = max(include, exclude);
-    
-    return dynamicArray[totalElements];
-}
 
 int maximumNonAdjacentSum(vector<int> &arrayList){
     // Write your code here.
-    int totalElements = arrayList.size(); 
-    //Step-1 -> Declare one dynamicArray with size of totalElements and every element should -1.
-    vector<int> dynamicArray(totalElements, -1);
-    return calculateMaxNonAdjacentSum(arrayList,totalElements-1, dynamicArray);
+    int totalElements = arrayList.size();
+
+    //Create an array with legnth same as totalLength and assign each element to 0.
+    vector<int> dynamicArray(totalElements, 0);
+    
+    //Write base case
+    dynamicArray[0] = arrayList[0];
+
+    //Convert recursive call logic of top-down approach into tabulation using for loop.
+    for(int i=1; i<totalElements; i++) {
+        int include = dynamicArray[i-2]+arrayList[i];
+        int exclude = dynamicArray[i-1];
+        dynamicArray[i] = max(include, exclude);
+    } 
+    return dynamicArray[totalElements-1];
 }
