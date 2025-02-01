@@ -30,6 +30,11 @@ In the first test case, cut it into 3 parts of 3, 2 and 2.
 In the second case, cut it into 8 parts of length 1.
 */
 
+/*
+Time Complexity -> O(n).
+Space Complexity -> O(n).
+*/
+
 #include<limits.h>
 int cutSegments(int n, int x, int y, int z) {
 	// Write your code here.
