@@ -39,6 +39,11 @@ In test case 1, For the array = {0}, there is no possible derrangements. Hence t
 In test case 2, For the array elements = {0, 1, 2, 3}, total 9 derrangements are possible. One of them is: { 3, 2, 1, 0}.
 */
 
+/*
+Time Complexity -> O(n).
+Space Complexity -> O(n) + O(n).
+*/
+
 #include<vector>
 #define MOD 1000000007
 
@@ -59,13 +64,13 @@ long long int totalWays(int n, vector<long long int>& dynamicArray) {
     }
 
     //Step - 3 -> Check if dynamicArray==-1 i.e. result is not yet computed, calculate it recursively.
-        dynamicArray[n] = ( ((n-1)%MOD) * ((totalWays(n-1, dynamicArray)%MOD) + (totalWays(n-2, dynamicArray)%MOD))%MOD);
-        return dynamicArray[n];
+        dynamicArray[n] = ( ((n-1)) * ((totalWays(n-1, dynamicArray)) + (totalWays(n-2, dynamicArray)%MOD)));
+        return dynamicArray[n]%MOD;
 }
 long long int countDerangements(int n) {
     // Write your code here.
 
-    //Step - 1; Create a dynamicArray of length 'n+1' having each element = -1;
+    //Step - 1 ->  Create a dynamicArray of length 'n+1' having each element = -1;
     vector<long long int> dynamicArray(n+1, -1);
 
     return totalWays(n, dynamicArray);    

@@ -38,6 +38,10 @@ In test case 1, For the array = {0}, there is no possible derrangements. Hence t
 
 In test case 2, For the array elements = {0, 1, 2, 3}, total 9 derrangements are possible. One of them is: { 3, 2, 1, 0}.
 */
+
+/*
+Complexities -> Exponential
+*/
 #define MOD 1000000007
 long long int countDerangements(int n) {
     // Write your code here.
@@ -52,7 +56,6 @@ long long int countDerangements(int n) {
         return 1;
     }
 
-    //int ans =((n-1)%MOD)*((countDerangements(n-2)%MOD)+(countDerangements(n-1)%MOD))%MOD;
     int ans = (n-1)*(countDerangements(n-1)+(countDerangements(n-2)));
 
     return ans%MOD;    
