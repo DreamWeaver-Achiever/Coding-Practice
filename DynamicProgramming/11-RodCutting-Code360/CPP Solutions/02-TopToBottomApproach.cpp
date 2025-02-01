@@ -30,7 +30,7 @@ In the first test case, cut it into 3 parts of 3, 2 and 2.
 In the second case, cut it into 8 parts of length 1.
 */
 
-#include<limits.h> // need to import this as we are using INT_MIN
+#include<limits.h> // need to import this as we are using INT_MIN for invalid entries
 
 int maxSegments(int rodLength, int x, int y, int z, vector<int>& dynamicArray) {
 
