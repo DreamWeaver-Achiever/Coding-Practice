@@ -64,7 +64,7 @@ int add(int a,int b){
     return ((a%MOD) + (b%MOD))%MOD;
 }
 int multi(int a,int b){
-    return ((a%MOD) * 1ll*(b%MOD))%MOD;
+    return ((a%MOD) * 1ll*(b%MOD))%MOD; //Need to add *1LL to handle range.
 }
 int calculateWays(int n, int k, vector<int>&dynamicArray){
       //Base case - 1
