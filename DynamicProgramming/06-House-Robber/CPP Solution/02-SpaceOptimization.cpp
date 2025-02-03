@@ -1,6 +1,6 @@
 /*
 Platform -> Code360
-Problem Link -> https://www.naukri.com/code360/problems/maximum-sum-of-non-adjacent-elements_843261?leftPanelTab=0&leftPanelTabValue=PROBLEM
+Problem Link -> https://www.naukri.com/code360/problems/house-robber_839733?leftPanelTab=0
 Problem statement:
 Mr. X is a professional robber planning to rob houses along a street. Each house has a certain amount of money hidden.
 
