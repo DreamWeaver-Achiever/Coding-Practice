@@ -27,3 +27,40 @@ Sample Output:
 Time Complexity -> 
 Space Complexity -> 
 */
+
+#include <bits/stdc++.h> 
+
+int solve (vector<int> weight, vector<int> value, int index, int capacity, vector<vector<int>>& dp){
+	//Base case 
+	//If only 1 item to steal, then just compare its weight with knapsack capacity
+	if(index==0) {
+		if(weight[0] <= capacity) {
+			return value[0];
+		} else {
+			return 0;
+		}
+	}
+
+	//Step - 2 -> Check if dp[index][capacity] != -1 i.e. if already computed.
+	if(dp[index][capacity] != -1) {
+		return dp[index][capacity];
+	}
+
+	//Step - 3 -> If dp[index][capacity] == -1 then, compute it recursively.
+	int include=0;
+	if(weight[index]<=capacity) {
+		include = value[index] + solve(weight, value, index-1, capacity-weight[index], dp);
+	} 
+	int exclude = 0+solve(weight, value,index-1, capacity, dp);
+	dp[index][capacity] = max(include, exclude);
+	return dp[index][capacity];
+}
+int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight) 
+{
+	// Write your code here
+
+	//Step-1 -> Declare 2D array of index(n in this case) and maxWeight. And assign its each value to -1.
+	vector<vector<int>> dp(n, vector<int>(maxWeight+1, -1));
+	return solve(weight, value, n-1, maxWeight, dp);
+	
+}
