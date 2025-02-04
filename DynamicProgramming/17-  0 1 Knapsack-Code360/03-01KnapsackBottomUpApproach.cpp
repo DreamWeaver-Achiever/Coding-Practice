@@ -25,7 +25,7 @@ Sample Output:
 
 /* Complexities -> 
 Time Complexity -> 
-Space Complexity -> 
+Space Complexity -> O(n*maxWeight)
 */
 
 #include <bits/stdc++.h> 
