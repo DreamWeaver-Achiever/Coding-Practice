@@ -22,8 +22,8 @@ If N = 3 and tar = 5 and array elements are [1,2,5] then the number of possible 
 Hence the output will be 9.
 */
 /*
-Time Complexity -> O(n).
-Space Complexity -> O(n)+O(n).
+Time Complexity -> O(n*target).
+Space Complexity -> O(target)+O(target).
 */
 
 #include <bits/stdc++.h>
