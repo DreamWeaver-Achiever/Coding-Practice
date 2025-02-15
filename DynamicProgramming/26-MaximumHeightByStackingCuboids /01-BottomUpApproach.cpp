@@ -34,7 +34,7 @@ class Solution {
     
             //Step-3 -> Use Longest increasing subsequence logic
             int n = cuboids.size();
-           vector<int> currentRow(n+1, 0);
+            vector<int> currentRow(n+1, 0);
             vector<int> nextRow(n+1, 0);
     
             for(int curr = n-1; curr>=0; curr--) {
