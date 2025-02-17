@@ -40,7 +40,7 @@ class Solution {
                         dynamicArray[currentLane][currentPosition] = dynamicArray[currentLane][currentPosition+1];
                     } else {
                         // sideways jump
-                        int ans = 1e9;
+                        int ans = INT_MAX;
                         for (int i = 1; i <= 3; i++) {
                             if ((currentLane != i) && (obstacles[currentPosition] != i)) {
                                 ans = min(ans, 1 + dynamicArray[i][currentPosition+1]);
