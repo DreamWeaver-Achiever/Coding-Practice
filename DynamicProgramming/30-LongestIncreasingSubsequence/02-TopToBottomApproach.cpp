@@ -23,7 +23,7 @@ Constraints:
 */
 
 /*
-Time complexity ->  O(n^2) i.e. exponential.
+Time complexity ->  O(n^2).
 Space complexity -> O(n^2) 
 */
 
