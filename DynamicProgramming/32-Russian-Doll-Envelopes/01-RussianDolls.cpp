@@ -9,3 +9,41 @@ Return the maximum number of envelopes you can Russian doll (i.e., put one insid
 
 Note: You cannot rotate an envelope.
 */
+
+/* 
+Time Complexity -> O(n log n)
+Space Complexity -> O(n)
+*/
+
+class Solution {
+    public:
+        int maxEnvelopes(vector<vector<int>>& envelopes) {
+            if (envelopes.empty()) {
+            return 0;
+        }
+    
+        sort(envelopes.begin(), envelopes.end(), [](const vector<int>& a, const vector<int>& b) {
+            if (a[0] == b[0]) {
+                return a[1] > b[1]; // Descending height if widths are equal
+            }
+            return a[0] < b[0]; // Ascending width
+        });
+    
+        vector<int> heights;
+        for (const auto& envelope : envelopes) {
+            heights.push_back(envelope[1]);
+        }
+    
+        vector<int> tails;
+        for (int height : heights) {
+            if (tails.empty() || height > tails.back()) {
+                tails.push_back(height);
+            } else {
+                auto it = lower_bound(tails.begin(), tails.end(), height);
+                *it = height;
+            }
+        }
+    
+        return tails.size();
+        }
+    };
