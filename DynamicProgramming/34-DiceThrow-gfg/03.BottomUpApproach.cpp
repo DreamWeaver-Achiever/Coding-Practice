@@ -30,7 +30,7 @@ class Solution {
             for(int t=1; t<=target; t++) { 
                 long long ans=0; 
                 for(int i=1; i<=faces; i++) { 
-                    if(t-i >= 0) { 
+                    if(t-i >= 0) { //To avoid invalid index.
                         ans = ans + dynamicArray[d-1][t-i]; 
                     } 
                     
