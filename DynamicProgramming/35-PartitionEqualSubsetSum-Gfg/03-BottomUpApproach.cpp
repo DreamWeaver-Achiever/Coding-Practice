@@ -23,7 +23,15 @@ using namespace std;
 
 class Solution {
   public:
-    bool checkEqualPartition(vector<int>& arr, int total) {
+    bool equalPartition(vector<int>& arr) {
+        // code here
+        int total = 0;
+        for(int i=0; i<arr.size(); i++) {
+            total = total + arr[i];
+        } 
+        if(total & 1) {
+            return 0;
+        } 
         int N = arr.size();
         //Base cases
        //Step-1: Declare 2D array for index and target
@@ -46,19 +54,7 @@ class Solution {
             }
         } 
         return dynamicArray[0][total/2];
-        
-    }
-    bool equalPartition(vector<int>& arr) {
-        // code here
-        int total = 0;
-        for(int i=0; i<arr.size(); i++) {
-            total = total + arr[i];
-        } 
-        if(total & 1) {
-            return 0;
-        } 
-        return checkEqualPartition(arr, total);
-    }
+};
 };
 
 
