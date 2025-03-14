@@ -22,7 +22,7 @@ class Solution {
             int n = nums1.size();
             vector<vector<int>> dp(n+1, vector<int>(2, 0));
             for(int index=n-1; index>=1; index--) {
-                for(int swapped=1; swapped>=0; swapped--) {
+                for(int swapped=1; swapped>=0; swapped--) { //This for loop will give constants complexity so no need to consider this for loop while calculating time complexity.
                     // If elements of an array are not yet computed then calculate them recursively.
                     int ans = INT_MAX;
                     int previous1 = nums1[index-1];
