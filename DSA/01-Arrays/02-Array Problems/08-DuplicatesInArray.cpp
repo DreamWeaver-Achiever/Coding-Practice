@@ -14,3 +14,20 @@ int findDuplicate(vector<int> &arr)
     
 	
 }
+
+//Partially Accpeted solution with TLE at one test-case -> 
+/*
+int findDuplicate(vector<int> &arr) 
+{
+    // Write your code here 
+    for(int i=0; i<arr.size(); i++) { 
+        for(int j=i+1; j<arr.size(); j++) {
+            if((arr[i]==arr[j]) && (i!=j)) {
+                return arr[i];
+            } 
+        }
+    } 
+    return -1;
+	
+}
+*/
