@@ -18,7 +18,7 @@ int main() {
             beg = mid+1;
         } 
     } 
-    if(found==0) {
+    if((beg>end)&&(found==0)) {
         cout<<"Element is not present in an array";
     }
     return 0;
